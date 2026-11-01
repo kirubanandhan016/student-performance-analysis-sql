@@ -117,7 +117,6 @@ student-performance-analysis-sql/
 
 GitHub: [@kirubanandhan016](https://github.com/kirubanandhan016)
 EMail: kirubanandhan016@gmail.com
-phone: 8675118864
 
 ---
 
