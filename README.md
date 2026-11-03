@@ -1,68 +1,86 @@
 # Student Performance Analysis — SQL & SQLite
 
-A relational database project for exploring student marks, subject results, department-level performance, and attendance using SQL. It demonstrates database querying and reporting skills relevant to backend development and data-driven applications.
+Relational database project for exploring student marks, subject results, department performance, and attendance using SQLite.
 
-## Project scope
+The primary student-analysis setup script in the repository root is `student_performance.sql`. It creates and populates the student schema and runs example analysis queries.
 
-The documented schema covers:
-- `students` — student and department information
-- `subjects` — subject details and credits
-- `marks` — marks by student, subject, and semester
-- `attendance` — classes attended and total classes
+## Schema
 
-Confirm table and script names against the repository if you change the schema.
+- `students`: student identity, department, date of birth, and email
+- `subjects`: subject names and credit values
+- `marks`: marks by student, subject, and semester
+- `attendance`: attended and total classes by student and subject
 
-## SQL concepts
+The SQL defines primary keys, foreign keys, unique constraints, and check constraints.
 
-- Filtering and sorting: `WHERE`, `ORDER BY`, `DISTINCT`
-- Aggregation: `GROUP BY`, `HAVING`, `AVG`, `COUNT`
-- Relational queries: joins and subqueries
-- Analytical SQL: CTEs and window functions such as `RANK`, `DENSE_RANK`, `ROW_NUMBER`, and `LAG`
-- Data integrity: primary keys, foreign keys, and constraints
-- Database objects and performance: views, indexes, and SQLite query plans
+## SQL concepts demonstrated
 
-## Questions the database can answer
+- Filtering and sorting with `WHERE`, `ORDER BY`, and `DISTINCT`
+- Aggregation with `GROUP BY`, `HAVING`, `AVG`, and `COUNT`
+- Joins and subqueries
+- Views and indexes
+- Window functions and ranking
+- Attendance percentage calculations
+- Query-plan inspection with `EXPLAIN QUERY PLAN`
 
-- Who are the top students by average marks?
-- Which department has the highest average performance?
-- Which subjects have the highest or lowest marks?
-- Which students fall below a chosen attendance threshold?
-- Which students perform above their department average?
-- How does an index affect a query plan?
+The additional `.SQL_Project/advanced_queries.sql` file contains weighted averages, department rankings, performance bands, subject comparisons, and further attendance analysis. Run it after the main student schema has been created.
 
 ## Run locally
 
 Install SQLite and ensure the `sqlite3` command is available.
 
+Clone the repository:
+
 ```bash
 git clone https://github.com/kirubanandhan016/student-performance-analysis-sql.git
 cd student-performance-analysis-sql
+```
+
+Create a fresh database and open the SQLite shell:
+
+```bash
 sqlite3 student_performance.db
 ```
 
-Inside the SQLite prompt, run the setup script if the file exists under that name:
+Run the root-level student schema and analysis script:
 
 ```sql
 .read student_performance.sql
 ```
 
-Then execute the analysis queries from the SQL files in the repository. Use a fresh database file when re-running a setup script that inserts fixed sample IDs, unless the script is designed to be idempotent.
+Optionally run the additional advanced queries:
+
+```sql
+.read .SQL_Project/advanced_queries.sql
+```
+
+Inspect the schema with `.tables` and `.schema`, then exit with `.quit`.
+
+## Repository layout notes
+
+- `student_performance.sql` is the root-level entry point for the student performance database.
+- `.SQL_Project/student_performance.sql` is a second copy of the student setup script, and `.SQL_Project/README.md` documents that subfolder's standalone usage.
+- `.SQL_Project/advanced_queries.sql` contains supplementary queries.
+- The root-level `project.sql` currently contains an e-commerce schema, not the student-performance schema. Do not run it when creating the student performance database.
+
+Use a fresh database file when re-running a setup script that inserts fixed sample IDs. The scripts are educational examples and are not guaranteed to be idempotent.
 
 ## Suggested verification
 
-- Run setup against a fresh database.
-- Check foreign-key constraints and representative query results.
-- Use `EXPLAIN QUERY PLAN` for queries discussed as optimization examples.
-- Record actual output samples in the README after validating them.
+- Apply the root script to a fresh SQLite database.
+- Confirm the four tables are present.
+- Check foreign-key enforcement and representative aggregate results.
+- Run the additional advanced query file after setup.
+- Use `EXPLAIN QUERY PLAN` to inspect the query-plan example.
 
 ## Relevance to backend development
 
-This project supports backend work by demonstrating relational schema concepts, joins, aggregation, constraints, and query analysis. It complements the FastAPI projects in my portfolio.
-
-## Project status
-
-Educational SQL project. The repository's SQL scripts are the source of truth; verify filenames and execute the queries locally before relying on specific results.
+This project demonstrates relational schema design, integrity constraints, joins, aggregation, indexes, and analytical queries that complement the database layer of a backend API.
 
 ## Author
 
-**Kirubanandhan V** · [GitHub](https://github.com/kirubanandhan016) · [Portfolio](https://kirubanandhan016.github.io/) · [LinkedIn](https://www.linkedin.com/in/kirubanandhan-v-98bb83443/)
+**Kirubanandhan V**
+
+- GitHub: [@kirubanandhan016](https://github.com/kirubanandhan016)
+- Portfolio: [kirubanandhan016.github.io](https://kirubanandhan016.github.io/)
+- LinkedIn: [Kirubanandhan V](https://www.linkedin.com/in/kirubanandhan-v-98bb83443/)

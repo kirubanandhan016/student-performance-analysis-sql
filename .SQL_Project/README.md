@@ -1,38 +1,45 @@
 # Student Performance Analysis System
 
-A sample SQLite project for exploring student marks, subject performance, and
-attendance. The database includes 8 students, 4 subjects, 32 mark records, and
-16 attendance records.
+SQLite project for exploring student marks, subject performance, and attendance.
 
 ## Files
 
-- `student_performance.sql` creates and populates the tables, adds the
-  `student_performance` view and indexes, and runs example analysis queries.
-- `advanced_queries.sql` contains additional CTE, window-function, aggregate,
-  and `CASE` queries.
-- `student_performance.db` is a prebuilt SQLite database populated from the
-  main script.
+- `student_performance.sql` creates and populates the student tables, adds the `student_performance` view and indexes, and runs example analysis queries.
+- `advanced_queries.sql` contains additional CTE, window-function, aggregate, and `CASE` queries.
+
+There is no prebuilt database file in this directory. Create one locally by running the setup script.
 
 ## Run the project
 
-From this directory, use the SQLite command-line tool:
+From this directory, create a new SQLite database:
 
-```text
+```bash
 sqlite3 student_performance.db
 ```
 
-To create a fresh database, run the main script:
+Inside the SQLite prompt, run the setup script:
 
-```text
-sqlite3 student_performance.db ".read student_performance.sql"
+```sql
+.read student_performance.sql
 ```
 
-To run the advanced queries against that database:
+Run additional queries after the main schema has been created:
 
-```text
-sqlite3 student_performance.db ".read advanced_queries.sql"
+```sql
+.read advanced_queries.sql
 ```
 
-The advanced query file expects the tables created by `student_performance.sql`.
-The schema uses SQLite features including foreign keys, check constraints,
-window functions, and a view.
+Inspect tables and schema:
+
+```sql
+.tables
+.schema
+```
+
+Exit with `.quit`.
+
+## Notes
+
+- The advanced query file expects the tables created by `student_performance.sql`.
+- The schema uses SQLite foreign keys, check constraints, window functions, and a view.
+- The setup script inserts fixed sample IDs. Use a fresh database file when running it again to avoid duplicate-key conflicts.
