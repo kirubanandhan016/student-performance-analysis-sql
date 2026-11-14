@@ -30,6 +30,40 @@ Confirm table and script names against the repository if you change the schema.
 - Which students perform above their department average?
 - How does an index affect a query plan?
 
+## Entity relationships
+
+```mermaid
+erDiagram
+    STUDENTS ||--o{ MARKS : receives
+    SUBJECTS ||--o{ MARKS : assessed_in
+    STUDENTS ||--o{ ATTENDANCE : records
+    STUDENTS {
+        integer student_id PK
+        text student_name
+        text department
+    }
+    SUBJECTS {
+        integer subject_id PK
+        text subject_name
+        integer credits
+    }
+    MARKS {
+        integer mark_id PK
+        integer student_id FK
+        integer subject_id FK
+        integer semester
+        real mark
+    }
+    ATTENDANCE {
+        integer attendance_id PK
+        integer student_id FK
+        integer classes_attended
+        integer total_classes
+    }
+```
+
+The diagram reflects the conceptual schema described in this README. Verify exact column names against the SQL setup script before using it as a migration specification.
+
 ## Run locally
 
 Install SQLite and ensure the `sqlite3` command is available.
