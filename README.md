@@ -100,3 +100,15 @@ Educational SQL project. The repository's SQL scripts are the source of truth; v
 ## Author
 
 **Kirubanandhan V** · [GitHub](https://github.com/kirubanandhan016) · [Portfolio](https://kirubanandhan016.github.io/) · [LinkedIn](https://www.linkedin.com/in/kirubanandhan-v-98bb83443/)
+
+
+## Query validation checklist
+
+- Run the schema/setup script against a fresh SQLite database.
+- Check that join keys match the declared primary-key and foreign-key columns.
+- Verify aggregates against a small hand-checked dataset, especially averages and attendance percentages.
+- Handle division-by-zero cases when calculating attendance rates.
+- Use `EXPLAIN QUERY PLAN` for any query described as optimized, and document measured observations rather than assuming an index improves every query.
+
+The README's ER diagram is a conceptual overview; the checked-in SQL definitions remain authoritative for exact column names and constraints.
+
